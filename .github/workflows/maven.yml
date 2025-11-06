@@ -58,4 +58,4 @@ jobs:
           docker pull mirkomil/springboot-image-new
           docker stop springboot-image-new || true
           docker rm springboot-image-new || true
-          docker run -d --name springboot-image-new -p 80:8080 mirkomil/springboot-image-new
+          docker run -d --name springboot-image-new -p 80:8080 mirkomil/springboot-image-new 
