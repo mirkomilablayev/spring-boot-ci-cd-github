@@ -15,6 +15,6 @@ public class SpringBootCiCdGithubApplication {
 
     @GetMapping("/health")
     public String health() {
-        return "I'm Alive 😅";
+        return "I'm Alive 😅!";
     }
 }
