@@ -47,3 +47,15 @@ jobs:
         dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
+
+    - name: Deploy to server
+      uses: appleboy/ssh-action@v0.1.7
+      with:
+        host: ${{ secrets.SERVER_IP }}
+        username: ${{ secrets.SERVER_USER }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+          docker pull mirkomil/springboot-image-new
+          docker stop springboot-image-new || true
+          docker rm springboot-image-new || true
+          docker run -d --name springboot-image-new -p 80:8080 mirkomil/springboot-image-new
